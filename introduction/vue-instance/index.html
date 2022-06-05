@@ -6,10 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vue instance</title>
     <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
-        <h1>{{ title }}</h1>  <!-- string interpolation -->
+        {{changeTitle("this title is will change initially")}} <!--template icinde method kullanilabilir-->
+        <h1>{{ title }}</h1>  <!-- string interpolation text content!in oldugu yerlerde calisir-->
+        <p>{{ description }}</p>
+        <a v-bind:target="gitHubLink.target" 
+            v-bind:href="gitHubLink.href" 
+            v-bind:alt="gitHubLink.alt"
+            v-bind:tugrankenger="personalization"
+            >
+        {{gitHubLink.urlText}}</a> <!-- target, href, alt attribute vuejs de bulunanan ilgili degiskenler ile bagliyoruz.  -->
+        <br><br>
+        <button v-on:click="changeTitle('first button')">Change Title</button> &nbsp;
+        <button v-on:click="changeTitle('second button')">Change Title 2</button>
+        <div @mousemove="updateCoords('coordinate info:',$event)" class="box"  @click="changeTitle('box element clicked')"></div>
+        <span>{{ coords.x}},{{coords.y}}</span>
     </div>
     <script src="app.js"></script>
 </body>

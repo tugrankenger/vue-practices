@@ -1,0 +1,9 @@
+.box{
+    width: 200px;
+    height: 200px;
+    border: 2px dashed magenta;
+    border-radius: 50%;
+    background: aliceblue;
+    margin-top: 20px;
+    cursor: pointer;
+}
