@@ -17,6 +17,14 @@ const app = Vue.createApp({
             console.log('runned counter 2');
             return this.counter2 > 5 ? 'bigger than 5': 'smaller than 5';
         }
+    },
+    watch:{ // compudet'da bulunan bir bilgiyi izlemeyi saglar, deger degistiginde calisir
+        counter(newValue, oldValue){ // yukaridaki counter'i izliyoruz, iki parametre alir, newValue, oldValue
+            console.log(oldValue, "=>", newValue);
+        },
+        getCounterResult(newValue, oldValue){
+            console.log(oldValue, "=>", newValue)
+        }
     }
     // methods:{
     //     inc(){
