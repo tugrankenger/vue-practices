@@ -14,23 +14,23 @@
                 <div class="col-2 mx-auto me-2 card p-2">
                     <h3 class="text-center">{{counter}}</h3>
                     <div class="d-flex justify-content-center align-items-center gap-3">
-                        <button @click="dec()" class="btn btn-danger btn-sm">-</button>
-                        <button @click="inc()" class="btn btn-primary btn-sm">+</button>
+                        <button @click="counter--" class="btn btn-danger btn-sm">-</button>
+                        <button @click="counter++" class="btn btn-primary btn-sm">+</button>
                     </div>
                     <div class="alert alert-warning mt-2 text-center">
                         <!--{{counter > 5 ? 'bigger than 5':'smaller than 5'}} -->
-                        {{getCounterResult()}}
+                        {{getCounterResult}}
                     </div>
                 </div>
                 <div class="col-2 mx-auto card p-2">
                     <h3 class="text-center">{{counter2}}</h3>
                     <div class="d-flex justify-content-center align-items-center gap-3">
-                        <button @click="dec2()" class="btn btn-danger btn-sm">-</button>
-                        <button @click="inc2()" class="btn btn-primary btn-sm">+</button>
+                        <button @click="counter2--" class="btn btn-danger btn-sm">-</button>
+                        <button @click="counter2++" class="btn btn-primary btn-sm">+</button>
                     </div>
                     <div class="alert alert-warning mt-2 text-center">
                         <!--{{counter > 5 ? 'bigger than 5':'smaller than 5'}} -->
-                        {{getCounter2Result()}}
+                        {{getCounter2Result}}
                     </div>
                 </div>
             </div>
