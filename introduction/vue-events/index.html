@@ -15,7 +15,17 @@
             <div class="col">
                 <h3 class="text-center">Event</h3>
                 <!--bir ozelligi vue tarafinda kontrol etmek istersek vue bind ile baglamais gerekir.-->
-                <input v-on:input="fullName = $event.target.value" type="text" v-bind:value="fullName" class="form-conttrol col-4 offset-4">&nbsp;
+                <!-- <input 
+                v-on:input="fullName = $event.target.value" 
+                type="text" 
+                v-bind:value="fullName" 
+                class="form-conttrol col-4 offset-4">&nbsp; -->
+
+                <!--v-model data icerisindeki bir deger ile calisir. two-way data binding yapar-->
+                <input 
+                v-model="fullName"
+                class="form-conttrol col-4 offset-4">&nbsp;
+
                 <button class="btn btn-primary btn-sm">Add</button>
                 <br><br>
                 <span class="col-4 offset-4">{{ fullName }}</span>
