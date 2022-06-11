@@ -1,7 +1,6 @@
 <template>
     <div class="container">
-        <h3>asdasd</h3>
-        <p>asdasd</p>
+        <app-header></app-header>
         <CounterItem></CounterItem>
         <DemoComponent></DemoComponent>
     </div>
@@ -10,10 +9,12 @@
 <script>
   import CounterItem from "@/components/CounterItem";
   import DemoComponent from "@/components/DemoComponent";
+  import AppHeader from "./components/AppHeader.vue";
   export default{
     components:{
-      CounterItem,
-      DemoComponent,
-    }
+    CounterItem,
+    DemoComponent,
+    AppHeader
+}
   }
 </script>
