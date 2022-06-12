@@ -1,6 +1,6 @@
 <template>
-    <ListSection :userList="userList" />
-    <AddSection  @new-item="$emit('new-item', $event)"/>
+    <ListSection />
+    <AddSection  />
    </template>
 
 <script>
@@ -8,8 +8,9 @@ import ListSection from "./ListSection.vue";
 import AddSection from "./AddSection.vue"
 
     export default{
-    props: ["userList"],
+    //props: ["userList"],
     emits: ["new-item"],
+    inject:["userList"],
     components: { ListSection , AddSection}
 }
 </script>

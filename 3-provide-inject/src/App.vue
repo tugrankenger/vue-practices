@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <UserSection :userList="userList" @new-item="userList.push($event)"/>
+    <UserSection/>
   </div>
 </template>
 
@@ -9,8 +9,23 @@ import UserSection from "./components/UserSection.vue";
   export default{
     data() {
         return {
-            userList: ["tugranKenger","johnLocke","julietBurke","desmondHume"],
+            provideData:{
+              userList: ["tugranKenger","johnLocke","julietBurke","desmondHume"],
+            }
         };
+    },
+
+    methods:{
+      newItem(event){
+        this.provideData.userList.push(event)
+      }
+    },
+
+    provide(){
+      return{
+        userList: this.provideData.userList,
+        newItem: this.newItem
+      }
     },
 
     components: { UserSection }
