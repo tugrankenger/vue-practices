@@ -10,7 +10,7 @@
             console.log("redColor mounted")
         },
 
-        activate(){
+        activated(){
             console.log("RedColor activated")
         },
 
