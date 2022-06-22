@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue conditions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+
+    <div class="container" id="app">
+        <div class="row">
+            <div class="col-4 offset-4 py-3">
+                <button @click="showContainer = !showContainer">Open / Close</button>
+                {{showContainer}}
+                <h1 v-if="!showContainer" class="text-danger">Will show initially</h1>
+                <h1 v-if="showContainer" class="text-primary">will show after</h1>
+                <hr>
+                <h3 :class="counterBoxClass">{{counter}}</h3>
+                <button class="btn btn-primary btn-sm me-2" @click="counter++">+</button>
+                <button class="btn btn-primary btn-sm" @click="counter--">-</button>
+                <!-- v-if elementi DOM uzerinden tamamen kaldirir -->
+                <p v-if="counter > 0">Pozitive</p>
+                <p v-else-if="counter < 0">Negative</p>
+                <p v-else="counter == 0">Zero</p>
+
+                <hr>
+
+                <!-- v-show elementi gosterir ya da gizler -->
+                <p v-show="counter > 0">Pozitive</p>
+                <p v-show="counter < 0">Negative</p>
+                <p v-show="counter == 0">Zero</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter app</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+        <div class="container" id="app">
+            <div class="row mt-5">
+                <div class="col-2 mx-auto me-2 card p-2">
+                    <h3 class="text-center">{{counter}}</h3>
+                    <div class="d-flex justify-content-center align-items-center gap-3">
+                        <button @click="counter--" class="btn btn-danger btn-sm">-</button>
+                        <button @click="counter++" class="btn btn-primary btn-sm">+</button>
+                    </div>
+                    <div class="alert alert-warning mt-2 text-center">
+                        <!--{{counter > 5 ? 'bigger than 5':'smaller than 5'}} -->
+                        {{getCounterResult}}
+                    </div>
+                </div>
+                <div class="col-2 mx-auto card p-2">
+                    <h3 class="text-center">{{counter2}}</h3>
+                    <div class="d-flex justify-content-center align-items-center gap-3">
+                        <button @click="counter2--" class="btn btn-danger btn-sm">-</button>
+                        <button @click="counter2++" class="btn btn-primary btn-sm">+</button>
+                    </div>
+                    <div class="alert alert-warning mt-2 text-center">
+                        <!--{{counter > 5 ? 'bigger than 5':'smaller than 5'}} -->
+                        {{getCounter2Result}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="app.js"></script>
+</body>
+</html>
