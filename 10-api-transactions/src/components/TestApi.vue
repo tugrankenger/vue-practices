@@ -25,7 +25,7 @@ axiosInstance.get(state.url).then((res) => {
         <th>TITLE</th>
         <th>COMPLETED</th>
       </tr>
-      <tr v-for="todo in state.todoList">
+      <tr v-for="todo in state.todoList" :key="todo.id">
         <td>{{todo.id}}</td>
         <td>{{todo.title}}</td>
         <td>{{todo.completed}}</td>
