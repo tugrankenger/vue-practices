@@ -41,3 +41,7 @@
     <div class="bg-red-200 p-1 text-red-900 text-center text-sm">Vue.js</div>
   </div>
 </template>
+
+<script>
+
+</script>
