@@ -33,6 +33,11 @@ import CryptoJS from 'crypto-js'
           password: this.userData.password
         }}).then((res)=>{
           console.log(res)
+          if(res?.data?.length >0){
+            this.$store.commit("setUser", res?.data[0])
+          }else{
+            alert('Boyle bir kullanici bulunmamaktadir.')
+          }
         }).catch(e => console.log(e))
         //.finally(()=> this.loadingState = false)
       }
