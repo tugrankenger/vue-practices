@@ -35,6 +35,7 @@ import CryptoJS from 'crypto-js'
           console.log(res)
           if(res?.data?.length >0){
             this.$store.commit("setUser", res?.data[0])
+            this.$router.push({name:'HomePage'})
           }else{
             alert('Boyle bir kullanici bulunmamaktadir.')
           }

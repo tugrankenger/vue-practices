@@ -1,4 +1,8 @@
 import { createStore } from 'vuex';
+import createPersistedState from 'vuex-persistedstate'
+import SecureLS from "secure-ls";
+
+var ls = new SecureLS({ isCompression: false });
 
 export default createStore({
   state:{
@@ -9,6 +13,9 @@ export default createStore({
   mutations:{
     setUser(state, user){
       state.user = user
+    },
+    logoutUser(state){
+      state.user =null
     }
   },
   getters:{
@@ -23,4 +30,15 @@ export default createStore({
     },
   _saltKey: state => state.saltKey
   },
+  //plugins:  [createPersistedState({key: "user "})] // bu sekilde localstorage key kisminda user yazar
+  plugins:  [
+    createPersistedState({
+      key:"user-info",
+      storage: {
+        getItem: (key) => ls.get(key),
+        setItem: (key, value) => ls.set(key, value),
+        removeItem: (key) => ls.remove(key),
+      },
+    }),
+  ]
 })
