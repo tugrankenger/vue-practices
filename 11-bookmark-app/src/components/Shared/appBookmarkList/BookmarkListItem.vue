@@ -32,11 +32,11 @@
         </div>
       </div>
       <div class="text-xs text-gray-400 mt-2 flex justify-between">
-        <a href="#" class="hover:text-black"> Gökhan Kandemir </a>
-        <span>14 Mart</span>
+        <a href="#" class="hover:text-black"> {{ userName }} </a>
+        <span>{{ createdAt }}</span>
       </div>
     </div>
-    <div class="bg-red-200 p-1 text-red-900 text-center text-sm">{{item.categoryId}}</div>
+    <div class="bg-red-200 p-1 text-red-900 text-center text-sm">{{ categoryName }}</div>
   </div>
 </template>
 
@@ -52,6 +52,17 @@
         type: Object,
         required: true,
         default: () => {}
+      }
+    },
+    computed:{
+      categoryName(){
+        return this.item?.category?.name || "-"
+      },
+      userName(){
+        return this.item?.user?.fullname || "-"
+      },
+      createdAt(){
+        return this.item?.created_at || "-"
       }
     }
   }

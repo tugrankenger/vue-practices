@@ -40,7 +40,7 @@ import { mapGetters } from 'vuex'
       onSave(){
         const saveData = {
           ...this.userData,
-          user_id: this._getCurrentUser?.id,
+          userId: this._getCurrentUser?.id,
           created_at : new Date()
         }
         this.$appAxios.post('bookmarks',saveData).then((res)=>{

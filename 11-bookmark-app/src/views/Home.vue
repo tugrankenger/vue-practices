@@ -22,7 +22,7 @@ export default {
     SideBar,
   },
   created(){
-    this.$appAxios.get('/bookmarks').then((res)=>{
+    this.$appAxios.get('/bookmarks?_expand=category&_expand=user').then((res)=>{
       console.log(res)
       this.bookmarkList = res?.data || []
     })
