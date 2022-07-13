@@ -3,7 +3,7 @@
       <h3 class="text-2xl text-center mb-3">Yeni Ekle</h3>
       <input ref="title" v-model="userData.title" type="text" placeholder="Başlık" class="input mb-3" />
       <input v-model="userData.url" type="text" placeholder="URL" class="input mb-3" />
-      <select class="input mb-3">
+      <select v-model="userData.categoryId" class="input mb-3">
         <option disabled value="" selected>Kategori</option>
         <option v-for="category in categoryList" :key="category.id" :value="category.id">{{category.name}}</option>
       </select>
@@ -34,6 +34,7 @@ import { mapGetters } from 'vuex'
         this.categoryList = res?.data || []
       })
       console.log(this.$refs?.title)
+      this.$refs.title.focus() // sayfa mounted edildiginde ilgili elemente focus olunur
     },
     methods:{
       onSave(){

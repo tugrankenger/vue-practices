@@ -27,15 +27,9 @@
   ],
   "bookmarks": [
     {
-      "title": "vue.js project",
-      "url": "https://www.github.com/tugrankenger",
-      "description": "vue.js composition api todo",
-      "id": 1
-    },
-    {
       "title": "deneme",
       "url": "https://",
-      "categoryId": null,
+      "categoryId": "Vue.js",
       "description": "denmeme",
       "user_id": 1,
       "created_at": "2022-07-13T15:07:54.157Z",
@@ -44,7 +38,7 @@
     {
       "title": "demo",
       "url": "https://....",
-      "categoryId": null,
+      "categoryId": "React",
       "description": "demodmeo",
       "user_id": 1,
       "created_at": "2022-07-13T15:11:00.270Z",
@@ -53,11 +47,20 @@
     {
       "title": "asdasd",
       "url": "www.asdasdasd.com",
-      "categoryId": null,
+      "categoryId": "Sosyal Yaşam",
       "description": "asdasdasd",
       "user_id": 1,
       "created_at": "2022-07-13T15:11:33.525Z",
       "id": 4
+    },
+    {
+      "title": "demo5",
+      "url": "https://www.github.com/tugrankenger",
+      "categoryId": "Frontend",
+      "description": "Protector of the seven kingdoms",
+      "user_id": 1,
+      "created_at": "2022-07-13T19:50:41.650Z",
+      "id": 5
     }
   ],
   "categories": [
