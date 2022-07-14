@@ -4,7 +4,189 @@
       "username": "tugrankenger",
       "fullname": "tugran kenger",
       "password": "79a0af24ff17bb7a8a4a1176de203d9f566ee17d",
-      "id": 1
+      "id": 1,
+      "likes": [
+        [
+          6,
+          8,
+          9,
+          7,
+          7,
+          8,
+          9,
+          5,
+          4
+        ],
+        [
+          6,
+          8,
+          9,
+          7,
+          7,
+          8,
+          9,
+          5,
+          4,
+          [
+            6,
+            8,
+            9,
+            7,
+            7,
+            8,
+            9,
+            5,
+            4
+          ]
+        ],
+        [
+          2,
+          2,
+          6,
+          8,
+          9,
+          7,
+          7,
+          8,
+          9,
+          5,
+          2,
+          [
+            6,
+            8,
+            9,
+            7,
+            7,
+            8,
+            9,
+            5,
+            4
+          ],
+          [
+            6,
+            8,
+            9,
+            7,
+            7,
+            8,
+            9,
+            5,
+            4,
+            [
+              6,
+              8,
+              9,
+              7,
+              7,
+              8,
+              9,
+              5,
+              4
+            ]
+          ]
+        ],
+        [
+          2,
+          2,
+          6,
+          8,
+          9,
+          7,
+          7,
+          8,
+          9,
+          4,
+          2,
+          [
+            6,
+            8,
+            9,
+            7,
+            7,
+            8,
+            9,
+            5,
+            4
+          ],
+          [
+            6,
+            8,
+            9,
+            7,
+            7,
+            8,
+            9,
+            5,
+            4,
+            [
+              6,
+              8,
+              9,
+              7,
+              7,
+              8,
+              9,
+              5,
+              4
+            ]
+          ],
+          [
+            2,
+            2,
+            6,
+            8,
+            9,
+            7,
+            7,
+            8,
+            9,
+            5,
+            2,
+            [
+              6,
+              8,
+              9,
+              7,
+              7,
+              8,
+              9,
+              5,
+              4
+            ],
+            [
+              6,
+              8,
+              9,
+              7,
+              7,
+              8,
+              9,
+              5,
+              4,
+              [
+                6,
+                8,
+                9,
+                7,
+                7,
+                8,
+                9,
+                5,
+                4
+              ]
+            ]
+          ]
+        ],
+        5,
+        6
+      ],
+      "bookmarks": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ]
     },
     {
       "username": "hunter",
@@ -36,15 +218,6 @@
       "id": 2
     },
     {
-      "title": "demo",
-      "url": "https://....",
-      "categoryId": 2,
-      "description": "demodmeo",
-      "userId": 1,
-      "created_at": "2022-07-13T15:11:00.270Z",
-      "id": 3
-    },
-    {
       "title": "asdasd",
       "url": "www.asdasdasd.com",
       "categoryId": 3,
@@ -70,6 +243,33 @@
       "userId": 1,
       "created_at": "2022-07-13T20:36:59.546Z",
       "id": 6
+    },
+    {
+      "title": "focustest",
+      "url": "https://github.com/tugrankenger/vue-practices",
+      "categoryId": 3,
+      "description": "vue-practices vue-practices vue-practices vue-practices vue-practices",
+      "userId": 1,
+      "created_at": "2022-07-13T21:13:55.233Z",
+      "id": 7
+    },
+    {
+      "title": "dizi izle",
+      "url": "https://www.hdfilmcehennemi.com",
+      "categoryId": 6,
+      "description": "breaking bad izle",
+      "userId": 1,
+      "created_at": "2022-07-14T11:47:23.255Z",
+      "id": 8
+    },
+    {
+      "title": "mongodb Atlas",
+      "url": "https://www.mongodb.com",
+      "categoryId": 5,
+      "description": "mongodb atlas öğren",
+      "userId": 1,
+      "created_at": "2022-07-14T11:48:21.045Z",
+      "id": 9
     }
   ],
   "categories": [

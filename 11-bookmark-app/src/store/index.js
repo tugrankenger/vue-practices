@@ -16,6 +16,12 @@ export default createStore({
     },
     logoutUser(state){
       state.user =null
+    },
+    setLikes(state, bookmarkIds){
+      state.user.likes = bookmarkIds
+    },
+    setBookmarks(state, bookmarkIds){
+      state.user.bookmarks = bookmarkIds
     }
   },
   getters:{
@@ -28,6 +34,9 @@ export default createStore({
       delete user?.password
       return user
     },
+    _userLikes: state => state.user?.likes || [],
+    _userBookmarks: state => state.user?.bookmarks || [],
+    _currentUserId: state => state?.user?.id,
   _saltKey: state => state.saltKey
   },
   //plugins:  [createPersistedState({key: "user "})] // bu sekilde localstorage key kisminda user yazar

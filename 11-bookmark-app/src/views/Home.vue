@@ -2,11 +2,11 @@
   <AppHeader />
 
   <div class="flex flex-row">
-    <SideBar />
+    <SideBar @category-changed="updateBookmarkList"/>
 
         <!-- main.js icersinde import ederek globalde yayinlamis olduk, appBookmarkList kalsorunu import ettik icersindeki Index.vue otomatik olarak alinmis oldu -->
-    <appBookmarkList :items="bookmarkList" /> <!-- buraya Index.vue geliyor.  -->
-
+    <appBookmarkList v-if="bookmarkList.length > 0" :items="bookmarkList" /> <!-- buraya Index.vue geliyor.  -->
+    <div v-else>Bookmark bulunmamaktadir!</div>
   </div>
 </template>
 
@@ -27,5 +27,13 @@ export default {
       this.bookmarkList = res?.data || []
     })
   },
+  methods:{
+    updateBookmarkList(categoryId){
+      const url = categoryId ? `/bookmarks?_expand=category&_expand=user&categoryId=${categoryId}` : `/bookmarks?_expand=category&_expand=user`
+      this.$appAxios.get(url).then((res)=>{
+        this.bookmarkList = res?.data || []
+      })
+    }
+  }
 }
 </script>
