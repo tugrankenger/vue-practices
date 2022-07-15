@@ -4,189 +4,7 @@
       "username": "tugrankenger",
       "fullname": "tugran kenger",
       "password": "79a0af24ff17bb7a8a4a1176de203d9f566ee17d",
-      "id": 1,
-      "likes": [
-        [
-          6,
-          8,
-          9,
-          7,
-          7,
-          8,
-          9,
-          5,
-          4
-        ],
-        [
-          6,
-          8,
-          9,
-          7,
-          7,
-          8,
-          9,
-          5,
-          4,
-          [
-            6,
-            8,
-            9,
-            7,
-            7,
-            8,
-            9,
-            5,
-            4
-          ]
-        ],
-        [
-          2,
-          2,
-          6,
-          8,
-          9,
-          7,
-          7,
-          8,
-          9,
-          5,
-          2,
-          [
-            6,
-            8,
-            9,
-            7,
-            7,
-            8,
-            9,
-            5,
-            4
-          ],
-          [
-            6,
-            8,
-            9,
-            7,
-            7,
-            8,
-            9,
-            5,
-            4,
-            [
-              6,
-              8,
-              9,
-              7,
-              7,
-              8,
-              9,
-              5,
-              4
-            ]
-          ]
-        ],
-        [
-          2,
-          2,
-          6,
-          8,
-          9,
-          7,
-          7,
-          8,
-          9,
-          4,
-          2,
-          [
-            6,
-            8,
-            9,
-            7,
-            7,
-            8,
-            9,
-            5,
-            4
-          ],
-          [
-            6,
-            8,
-            9,
-            7,
-            7,
-            8,
-            9,
-            5,
-            4,
-            [
-              6,
-              8,
-              9,
-              7,
-              7,
-              8,
-              9,
-              5,
-              4
-            ]
-          ],
-          [
-            2,
-            2,
-            6,
-            8,
-            9,
-            7,
-            7,
-            8,
-            9,
-            5,
-            2,
-            [
-              6,
-              8,
-              9,
-              7,
-              7,
-              8,
-              9,
-              5,
-              4
-            ],
-            [
-              6,
-              8,
-              9,
-              7,
-              7,
-              8,
-              9,
-              5,
-              4,
-              [
-                6,
-                8,
-                9,
-                7,
-                7,
-                8,
-                9,
-                5,
-                4
-              ]
-            ]
-          ]
-        ],
-        5,
-        6
-      ],
-      "bookmarks": [
-        4,
-        4,
-        4,
-        4,
-        4
-      ]
+      "id": 1
     },
     {
       "username": "hunter",
@@ -198,13 +16,69 @@
       "username": "desmond",
       "fullname": "Desmond Hume",
       "password": "79a0af24ff17bb7a8a4a1176de203d9f566ee17d",
-      "id": 3
+      "id": 3,
+      "bookmarks": [
+        {
+          "userId": 1,
+          "bookmarkId": 6,
+          "id": 4,
+          "bookmark": {
+            "title": "newww",
+            "url": "https://www.google.com",
+            "categoryId": 1,
+            "description": "new new new new",
+            "userId": 1,
+            "created_at": "2022-07-13T20:36:59.546Z",
+            "id": 6
+          },
+          "user": {
+            "username": "tugrankenger",
+            "fullname": "tugran kenger",
+            "password": "79a0af24ff17bb7a8a4a1176de203d9f566ee17d",
+            "id": 1
+          }
+        },
+        8
+      ],
+      "likes": [
+        {
+          "userId": 1,
+          "bookmarkId": 1,
+          "id": 1,
+          "user": {
+            "username": "tugrankenger",
+            "fullname": "tugran kenger",
+            "password": "79a0af24ff17bb7a8a4a1176de203d9f566ee17d",
+            "id": 1
+          }
+        },
+        9
+      ]
     },
     {
       "username": "austen",
       "fullname": "kate austen",
       "password": "79a0af24ff17bb7a8a4a1176de203d9f566ee17d",
       "id": 4
+    }
+  ],
+  "user_likes": [
+    {
+      "userId": 2,
+      "bookmarkId": 8,
+      "id": 1
+    }
+  ],
+  "user_bookmarks": [
+    {
+      "userId": 1,
+      "bookmarkId": 6,
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "bookmarkId": 5,
+      "id": 5
     }
   ],
   "bookmarks": [

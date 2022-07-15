@@ -22,12 +22,24 @@ export default {
     SideBar,
   },
   created(){
-    this.$appAxios.get('/bookmarks?_expand=category&_expand=user').then((res)=>{
-      console.log(res)
-      this.bookmarkList = res?.data || []
-    })
+    this.fetchData();
   },
   methods:{
+    fetchData(){
+      this.$appAxios.get('/bookmarks?_expand=category&_expand=user').then((res)=>{
+        this.bookmarkList = res?.data || []
+      });
+
+    // bookmark olarak eklediklerimizi cekmek icin user_bookmarks uzerinden cekelim
+    this.$appAxios.get('/user_bookmarks/?_expand=bookmark&_expand=user').then((res)=>{
+      this.$store.commit("setBookmarks",res?.data)
+    });
+
+    // like olarak eklediklerimizi cekmek icin user_likes uzerinden cekelim
+    this.$appAxios.get('/user_likes/?_expand=bookmark&_expand=user').then((res)=>{
+      this.$store.commit("setLikes", res?.data)
+    })
+    },
     updateBookmarkList(categoryId){
       const url = categoryId ? `/bookmarks?_expand=category&_expand=user&categoryId=${categoryId}` : `/bookmarks?_expand=category&_expand=user`
       this.$appAxios.get(url).then((res)=>{

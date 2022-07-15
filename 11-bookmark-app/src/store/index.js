@@ -37,7 +37,7 @@ export default createStore({
     _userLikes: state => state.user?.likes || [],
     _userBookmarks: state => state.user?.bookmarks || [],
     _currentUserId: state => state?.user?.id,
-  _saltKey: state => state.saltKey
+    _saltKey: state => state.saltKey
   },
   //plugins:  [createPersistedState({key: "user "})] // bu sekilde localstorage key kisminda user yazar
   plugins:  [
