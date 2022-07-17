@@ -72,7 +72,7 @@ export default {
         } else {
           bookmarks = [...bookmarks, res.data];
         }
-        this.$store.commit("setLikes", bookmarks);
+        this.$store.commit("setLikes", bookmarks); // store guncelliyoruz
       });
     },
     _likeItem() {
@@ -83,7 +83,7 @@ export default {
         likes = likes.filter(l => l !== this.item.id);
       }
       this.$appAxios.patch(`/users/${this._getCurrentUser.id}`, { likes }).then(() => {
-        this.$store.commit("setLikes", likes);
+        this.$store.commit("setLikes", likes); // store guncelliyoruz
       });
     },
     bookmarkItem() {
@@ -101,7 +101,7 @@ export default {
         } else {
           bookmarks = [...bookmarks, res.data];
         }
-        this.$store.commit("setBookmarks", bookmarks);
+        this.$store.commit("setBookmarks", bookmarks); // store guncelliyoruz
       });
     },
     _bookmarkItem() {
@@ -112,7 +112,7 @@ export default {
         bookmarks = bookmarks.filter(b => b !== this.item.id);
       }
       this.$appAxios.patch(`/users/${this._getCurrentUser.id}`, { bookmarks }).then(() => {
-        this.$store.commit("setBookmarks", bookmarks);
+        this.$store.commit("setBookmarks", bookmarks); // store guncelliyoruz
       });
     }
   },
