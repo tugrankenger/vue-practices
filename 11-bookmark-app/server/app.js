@@ -22,7 +22,12 @@ server.listen(PORT,hostname,()=>{
   // ona da socket dedik
 
   io.on("connection", (socket)=>{
-    console.log("client ready")
-    console.log(socket)
+    console.log("client ready!!!!!!")
+    console.log(socket.id)
+
+    socket.emit("WELCOME_MESSAGE",`welcome to hell ${socket.id} !!!!`) //karsilama mesaji gonder
+    socket.on("SEND_MESSAGE", data => {
+      console.log("Message has arrived !!!!!", data)
+    })
   })
 })
