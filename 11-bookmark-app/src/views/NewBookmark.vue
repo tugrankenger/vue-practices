@@ -46,6 +46,7 @@ import { mapGetters } from 'vuex'
         this.$appAxios.post('bookmarks',saveData).then((res)=>{
           console.log(res)
           Object.keys(this.userData)?.forEach(field =>(this.userData[field]=null)); // kayit yaptiktan sonra objemizi temizliyoruz
+          this.$socket.emit("NEW_BOOKMARK_ITEM",res.data)
           this.$router.push({name:"HomePage"})
         })
       }

@@ -21,6 +21,9 @@ export default {
   components: {
     SideBar,
   },
+  mounted() {
+      this.$socket.on("NEW_BOOKMARK_ADDED", this.fetchData)
+    },
   created(){
     this.fetchData();
   },

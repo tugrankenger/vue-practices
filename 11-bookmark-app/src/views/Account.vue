@@ -13,7 +13,6 @@
 
 <script>
 import SideBar from '@/components/Account/SideBar'
-import io from "socket.io-client"
 export default {
   data() {
     return {
@@ -29,7 +28,6 @@ export default {
     })
   },
   mounted() {
-    this.$socket = io("http://localhost:2018")
     this.$socket.on("WELCOME_MESSAGE", this.WELCOME_MESSAGE)
   },
   methods: {
@@ -37,7 +35,6 @@ export default {
     console.log(data)
     },
     SEND_MESSAGE(e){
-      console.log(e.target.value)
       this.$socket.emit("SEND_MESSAGE",e.target.value) // sunucu tarafina inputtaki mesaji gonderiyoruz
     }
   },

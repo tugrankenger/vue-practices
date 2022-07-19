@@ -25,9 +25,10 @@ server.listen(PORT,hostname,()=>{
     console.log("client ready!!!!!!")
     console.log(socket.id)
 
-    socket.emit("WELCOME_MESSAGE",`welcome to hell ${socket.id} !!!!`) //karsilama mesaji gonder
-    socket.on("SEND_MESSAGE", data => {
-      console.log("Message has arrived !!!!!", data)
+    socket.emit("WELCOME_MESSAGE",`welcome to hell ${socket.id} !!!!`) // yukari karsilama mesaji gonder
+    socket.on("NEW_BOOKMARK_ITEM", data => {
+      console.log("Bookmark has arrived !!!!!", data)
+      io.emit("NEW_BOOKMARK_ADDED")  //her yere bilgi gonderiyoruz bookmark'in geldigine dair
     })
   })
 })
