@@ -36,6 +36,11 @@ const routes = [
     path:'/panama',
     name: 'Panama',
     component: ()=> import('../views/Panama.vue')
+  },
+  {
+    path: '/destination/:id',
+    name: 'Destination',
+    component: ()=> import('../views/DestinationShow.vue')
   }
 ]
 
