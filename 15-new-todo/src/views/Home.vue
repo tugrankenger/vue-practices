@@ -1,36 +1,36 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 const state = reactive({
   todoList:[
-    {
-      id: new Date().getTime(),
-      name: "Tugran",
-      completed: false
-    },
-    {
-      id: new Date().getTime(),
-      name: "Penny",
-      completed: false
-    },
-    {
-      id: new Date().getTime(),
-      name: "Sawyer",
-      completed: false
-    },
-    {
-      id: new Date().getTime(),
-      name: "Desmond",
-      completed: false
-    }
+    
   ]
 })
 
+const addTodo = (event) =>{
+  state.todoList.push({
+    id: new Date().getTime(),
+    name: event,
+    completed:false
+  })
+  state.todoList.name=""
+}
+
+const completedItemCount = computed(()=>{
+  return state.todoList.filter((item)=>item.completed).length
+})
+
+const unCompletedItemCount = computed(()=>{
+  return state.todoList.filter((item)=> !item.completed).length
+})
 </script>
 
 <template>
   <div class="container">
     <div class="add-section">
-      <input type="text" v-model="state.todoList.name">
+      <input type="text"
+      v-model="state.todoList.name"
+      placeholder="Entry something..."
+      @keyup.enter="addTodo(state.todoList.name)">
     </div>
     <div class="list-section">
       <table>
@@ -49,6 +49,10 @@ const state = reactive({
           </tr>
         </tbody>
       </table>
+      <div class="completed-item-count">
+        <span>Completed: {{completedItemCount}}</span>
+        <span>Uncompleted:{{unCompletedItemCount}}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -76,8 +80,28 @@ const state = reactive({
   table th, td{
     padding-right: 50px;
   }
-
   td.completed{
     text-decoration: line-through;
+  }
+  .completed-item-count{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+  }
+  .add-section{
+    margin: 30px auto;
+  }
+  .add-section input{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(135, 135, 135);
+  }
+  .add-section input:focus{
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
   }
 </style>
