@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, computed } from 'vue'
+import { reactive, computed, onMounted } from 'vue'
 const state = reactive({
   todoList:[
     
@@ -12,7 +12,14 @@ const addTodo = (event) =>{
     name: event,
     completed:false
   })
+  localStorage.setItem("todo", JSON.stringify(state.todoList))
   state.todoList.name=""
+}
+
+const deleteTodo = (todoItem) =>{
+  state.todoList = state.todoList.filter(item=> item !== todoItem)
+  localStorage.setItem("todo", JSON.stringify(state.todoList))
+  return state.todoList
 }
 
 const completedItemCount = computed(()=>{
@@ -22,10 +29,16 @@ const completedItemCount = computed(()=>{
 const unCompletedItemCount = computed(()=>{
   return state.todoList.filter((item)=> !item.completed).length
 })
+
+onMounted(()=>{
+  let localTodos = localStorage.getItem("todo")
+    state.todoList = JSON.parse(localTodos) || []
+})
 </script>
 
 <template>
   <div class="container">
+    <h3>Todo List</h3>
     <div class="add-section">
       <input type="text"
       v-model="state.todoList.name"
@@ -39,6 +52,7 @@ const unCompletedItemCount = computed(()=>{
             <th>Id</th>
             <th>Name</th>
             <th>Completed</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -46,6 +60,11 @@ const unCompletedItemCount = computed(()=>{
             <td>{{todoItem.id}}</td>
             <td :class="{completed: todoItem.completed}">{{todoItem.name}}</td>
             <td><input type="checkbox" v-model="todoItem.completed"></td>
+            <td class="actions">
+              <button @click="deleteTodo(todoItem)">
+                <img src="../assets/trash.svg" alt="">
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -103,5 +122,11 @@ const unCompletedItemCount = computed(()=>{
     border-color: #80bdff;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+  }
+  .actions button{
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
   }
 </style>
