@@ -74,7 +74,7 @@ onMounted(()=>{
           <tr v-for="(todoItem,index) in state.todoList" :key="todoItem.id">
             <td>{{todoItem.id}}</td>
             <td :class="{completed: todoItem.completed}">
-              <input v-if="state.editState && state.editIndex == index"  type="text" v-model="todoItem.name" @keyup.enter="editTodoName(todoItem.name, index)">
+              <input v-if="state.editState && state.editIndex == index"  type="text" autofocus v-model="todoItem.name" @keyup.enter="editTodoName(todoItem.name, index)">
             <span v-else="!todoItem.editMode">{{todoItem.name}}</span> </td>
             <td><input type="checkbox" v-model="todoItem.completed"></td>
             <td class="actions">  
@@ -105,6 +105,10 @@ onMounted(()=>{
   }
   table tr{
     border: 1px solid #efefef
+  }
+  table tr td:nth-child(2){
+    width: 200px;
+    height: 40px;
   }
   table tr:hover:not(thead tr){
     background: #d2d2d2;
