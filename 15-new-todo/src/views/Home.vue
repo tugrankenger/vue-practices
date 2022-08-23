@@ -6,7 +6,6 @@ const state = reactive({
   ],
   editState: false,
   editIndex: null,
-
 })
 
 const addTodo = (event) =>{
@@ -26,13 +25,13 @@ const deleteTodo = (todoItem) =>{
   return state.todoList
 }
 
-const editTodo = (index) =>{
+const editBtn = (todoItem,index) =>{
   state.editState = !state.editState
   state.editIndex = index
-  state.todoList[index].editMode = true
+  todoItem.editMode = true
 }
 
-const editTask = (editName, index) =>{
+const editTodoName = (editName, index) =>{
   state.todoList[index].name= editName
   localStorage.setItem("todo",JSON.stringify(state.todoList))
   state.editState = false
@@ -75,11 +74,11 @@ onMounted(()=>{
           <tr v-for="(todoItem,index) in state.todoList" :key="todoItem.id">
             <td>{{todoItem.id}}</td>
             <td :class="{completed: todoItem.completed}">
-              <input v-if="state.editState && state.editIndex == index"  type="text" v-model="todoItem.name" @keyup.enter="editTask(todoItem.name, index)">
-            <span v-if="!state.todoList.editMode">{{todoItem.name}}</span> </td>
+              <input v-if="state.editState && state.editIndex == index"  type="text" v-model="todoItem.name" @keyup.enter="editTodoName(todoItem.name, index)">
+            <span v-else="!todoItem.editMode">{{todoItem.name}}</span> </td>
             <td><input type="checkbox" v-model="todoItem.completed"></td>
-            <td class="actions">
-              <button @click="editTodo(index)">
+            <td class="actions">  
+              <button @click="editBtn(todoItem,index)">
                 <img src="../assets/edit.svg" alt="">
               </button>
               <button @click="deleteTodo(todoItem)">
