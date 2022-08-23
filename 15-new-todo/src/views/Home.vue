@@ -3,14 +3,18 @@ import { reactive, computed, onMounted } from 'vue'
 const state = reactive({
   todoList:[
     
-  ]
+  ],
+  editState: false,
+  editIndex: null,
+
 })
 
 const addTodo = (event) =>{
   state.todoList.push({
     id: new Date().getTime(),
     name: event,
-    completed:false
+    completed:false,
+    editMode: false
   })
   localStorage.setItem("todo", JSON.stringify(state.todoList))
   state.todoList.name=""
@@ -20,6 +24,18 @@ const deleteTodo = (todoItem) =>{
   state.todoList = state.todoList.filter(item=> item !== todoItem)
   localStorage.setItem("todo", JSON.stringify(state.todoList))
   return state.todoList
+}
+
+const editTodo = (index) =>{
+  state.editState = !state.editState
+  state.editIndex = index
+  state.todoList[index].editMode = true
+}
+
+const editTask = (editName, index) =>{
+  state.todoList[index].name= editName
+  localStorage.setItem("todo",JSON.stringify(state.todoList))
+  state.editState = false
 }
 
 const completedItemCount = computed(()=>{
@@ -56,11 +72,16 @@ onMounted(()=>{
           </tr>
         </thead>
         <tbody>
-          <tr v-for="todoItem in state.todoList" :key="todoItem.id">
+          <tr v-for="(todoItem,index) in state.todoList" :key="todoItem.id">
             <td>{{todoItem.id}}</td>
-            <td :class="{completed: todoItem.completed}">{{todoItem.name}}</td>
+            <td :class="{completed: todoItem.completed}">
+              <input v-if="state.editState && state.editIndex == index"  type="text" v-model="todoItem.name" @keyup.enter="editTask(todoItem.name, index)">
+            <span v-if="!state.todoList.editMode">{{todoItem.name}}</span> </td>
             <td><input type="checkbox" v-model="todoItem.completed"></td>
             <td class="actions">
+              <button @click="editTodo(index)">
+                <img src="../assets/edit.svg" alt="">
+              </button>
               <button @click="deleteTodo(todoItem)">
                 <img src="../assets/trash.svg" alt="">
               </button>
@@ -111,17 +132,23 @@ onMounted(()=>{
   .add-section{
     margin: 30px auto;
   }
-  .add-section input{
+   input{
     display: block;
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid rgb(135, 135, 135);
   }
-  .add-section input:focus{
+   input:focus{
     border-color: #80bdff;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+  }
+  
+  .actions{
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
   .actions button{
     padding: 0;
