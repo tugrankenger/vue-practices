@@ -1,0 +1,70 @@
+table {
+  width: 100%;
+  height: auto;
+  border-collapse: collapse;
+  background: #fff;
+}
+table tr {
+  border: 1px solid #efefef
+}
+table tr td:nth-child(2) {
+  width: 200px;
+  height: 40px;
+}
+table tr:hover:not(thead tr) {
+  background: #d2d2d2;
+}
+table th,
+tr,
+td {
+  padding: 8px;
+  text-align: left;
+}
+table tr:nth-child(even) {
+  background: #efefef;
+}
+table th,
+td {
+  padding-right: 50px;
+}
+td.completed {
+  text-decoration: line-through;
+}
+.completed-item-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+.add-section {
+  margin: 30px auto;
+}
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(135, 135, 135);
+}
+input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.actions button {
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.list-section{
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
