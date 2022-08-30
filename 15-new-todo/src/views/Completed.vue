@@ -1,10 +1,12 @@
 <script setup>
+
 const props = defineProps({
   todoListProps: Array
 })
 
 const completedFilter = () =>{
-  return props.todoListProps.filter((item)=> item.completed)
+  console.log(props?.todoListProps || "nothing...")
+  return props?.todoListProps?.filter((item)=> item.completed) || []
 }
 
 </script>

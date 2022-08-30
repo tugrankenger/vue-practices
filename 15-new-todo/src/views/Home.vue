@@ -3,7 +3,7 @@ import { reactive, computed, onMounted } from 'vue'
 import Completed from './Completed.vue'
 const state = reactive({
   todoList: [
-
+    
   ],
   editActive: false,
   editIndex: null,
@@ -60,6 +60,9 @@ onMounted(() => {
     <div class="add-section">
       <input type="text" v-model="state.todoList.name" placeholder="Entry something..."
         @keyup.enter="addTodo(state.todoList.name)">
+    </div>
+    <div>
+      <router-link :to="{name:'Completed'}">Completed Items</router-link>
     </div>
     <div class="list-section">
       <div class="list-wrapper">
