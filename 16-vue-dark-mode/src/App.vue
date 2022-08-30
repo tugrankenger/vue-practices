@@ -1,31 +1,61 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import Header from './components/Header.vue';
+import Content from './components/Content.vue';
+
+export default{
+  name: 'app',
+  data(){
+    return{
+      mode: 'light'
+    }
+  },
+  components:{
+    Header,
+    Content
+  },
+  created(){
+    window.addEventListener('keyup',this.keyPress)
+  },
+  methods:{
+    keyPress(e){
+      if(e.key === 't'){
+        this.toggle()
+      }
+    },
+    toggle(){
+      if(this.mode == 'dark'){
+        this.mode = 'light'
+      }else{
+        this.mode= 'dark'
+      }
+    }
+  }
+}
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="app" :class="mode">
+    <Header :mode="mode" @toggle="toggle" />
+    <Content :mode="mode" />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.app{
+  width: 100vw;
+  min-height: 100vh;
+  background: #f3f3f3;
+  color: #152028;
+  transition: background .3s ease-in-out;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.dark{
+  background: #192734;
+  color: #e8e8e8;
 }
 </style>
