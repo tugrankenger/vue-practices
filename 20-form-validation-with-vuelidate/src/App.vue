@@ -1,31 +1,72 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+// import BaseInput from './components/BaseInput.vue';
+import { reactive, computed } from 'vue'
+import useVuelidate from '@vuelidate/core'
+import { required, minLength, email, sameAs } from '@vuelidate/validators'
+
+const formData = reactive({
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: ""
+})
+
+const rules = computed(() => {
+  return {
+    username: { required, minLength: minLength(10) },
+    email: { required, email },
+    password: { required },
+    confirmPassword: { required, sameAs: sameAs(formData.password) }
+  }
+})
+
+const v$ = useVuelidate(rules, formData)
+
+const submitForm = async (e) => {
+  const result = await v$.value.$validate()
+  if (result) {
+    alert("succes, form submitted")
+    e.target.reset()
+  } else {
+    alert("Error, please check all form sections")
+  }
+}
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <form @submit.prevent="submitForm" class="input-wrap">
+      <input label="Username" v-model="formData.username" type="text" placeholder="Username" />
+      <p v-for="error in v$.username.$errors" :key="error.$uid">
+        {{error.$property}} - {{error.$message}}
+      </p>
+      <input label="Email" v-model="formData.email" type="email" placeholder="Email" />
+      <p v-for="error in v$.email.$errors" :key="error.$uid">
+        {{error.$property}} - {{error.$message}}
+      </p>
+      <input label="Password" v-model="formData.password" type="password" placeholder="Password" />
+      <p v-for="error in v$.password.$errors" :key="error.$uid">
+        {{error.$property}} - {{error.$message}}
+      </p>
+      <input label="Confirm Password" v-model="formData.confirmPassword" type="password"
+        placeholder="Confirm Password" />
+      <p v-for="error in v$.confirmPassword.$errors" :key="error.$uid">
+        {{error.$property}} - {{error.$message}}
+      </p>
+      <!-- {{formData.username}} -->
+      <button type="submit">Submit</button>
+    </form>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<style lang="scss" scoped>
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    padding: 4px 12px;
+    margin: 10px 0;
+  }
 }
 </style>
