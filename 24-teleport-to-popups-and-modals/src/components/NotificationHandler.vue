@@ -1,5 +1,11 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
+import ModalContent from './ModalContent.vue';
+
+const state = reactive({
+  title: "This is a modal title",
+  msg:"this is a modal text content"
+})
 
 const isOpen = ref(false)
 </script>
@@ -10,11 +16,7 @@ const isOpen = ref(false)
 
     <teleport to="body">
       <div class="modal" v-if="isOpen">
-        <div>
-          <h2>Notification Title</h2>
-          <p>Lorem, ipsum dolor sit amet.</p>
-          <button @click="isOpen= false">Close</button>
-        </div>
+        <ModalContent :title="state.title" :msg="state.msg" @close="isOpen = false"/>
       </div>
     </teleport>
   </div>
