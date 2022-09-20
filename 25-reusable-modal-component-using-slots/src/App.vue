@@ -1,31 +1,30 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+  import { reactive } from 'vue'
+import Modal from './components/Modal.vue';
+
+const state = reactive({
+  title:"this is a dynamic title",
+  text:"this is a dynamic text content",
+  modalActive: false,
+})
+
+const toggleModal =()=>{
+  state.modalActive = !state.modalActive
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="home">
+    <Modal :modalActive="state.modalActive" @close="toggleModal">
+    <div class="modal-content">
+      <h1>{{state.title}}</h1>
+      <p>{{state.text}}</p>
+    </div>
+  </Modal>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <button @click="toggleModal">Open Modal</button>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+  
 </style>
