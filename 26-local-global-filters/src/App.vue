@@ -1,31 +1,29 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+  export default{
+    data(){
+      return{
+      localFilterText: "local filter with computed",
+      name:"tugrankenger"
+      }
+    },
+    computed:{
+      doUpper(){
+        return this.localFilterText.toUpperCase()
+      }
+    }
+  }
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <h3>Local and Global Filters with computed</h3>
+    <hr>
+    <p>{{doUpper}}</p>
+    <hr>
+    <p>{{$filters.textLength(name)}}</p>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style>
+
 </style>
