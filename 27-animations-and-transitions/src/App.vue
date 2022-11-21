@@ -2,7 +2,36 @@
 export default{
   data(){
     return{
-      show:false
+      show:false,
+      showJs: false
+    }
+  },
+  methods:{
+    beforeEnter(el){
+      console.log("before enter")
+    },
+    enter(el,done){
+      console.log("enter")
+      done()
+    },
+    afterEnter(el){
+      console.log("after enter")
+    },
+    afterEnterCancelled(el){
+      console.log("after enter cancelled")
+    },
+    beforeLeave(el){
+      console.log("before leave")
+    },
+    leave(el,done){
+      console.log("leave")
+      done();
+    },
+    afterLeave(el){
+      console.log("after leave")
+    },
+    afterLeaveCancelled(el){
+      console.log("after leave cancelled")
     }
   }
 }
@@ -17,10 +46,30 @@ export default{
     <br><br>
 
     <div class="transition-wrapper">
-      <transition name="bounce">
-      <div class="alert-box" v-if="show">This is a alert box</div>
+      <transition name="bounce" appear> <!-- appear for page onLoad -->
+      <div class="alert-box" v-if="!show">This is a alert box</div>
     </transition>
     </div>
+    <hr>
+    <br>
+    <div class="transition-wrapper">
+      <h3>javascript animations</h3>
+      <button @click="showJs = !showJs">Show / Hide</button>
+      <br><br>
+      <transition name="bounce"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter"
+        @after-enter-cancelled="afterEnterCancelled"
+        @before-leave="beforeLeave"
+        @leave="leave"
+        @after-leave="afterLeave"
+        @after-leave-cancelled="afterLeaveCancelled"
+      >
+      <div class="alert-box" v-if="!showJs">This is a alert box</div>
+    </transition>
+    </div>
+
   </div>
 </template>
 
