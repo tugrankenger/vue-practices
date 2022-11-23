@@ -1,10 +1,17 @@
 <script>
+import Home from './components/Home.vue'
+import Post from './components/Post.vue'
 export default{
+  components:{
+    appHome: Home,
+    appPost: Post
+  },  
   data(){
     return{
       show:false,
       showJs: false,
-      elementWidth : 100
+      elementWidth : 100,
+      isActiveComponent: 'app-Home',
     }
   },
   methods:{
@@ -90,7 +97,14 @@ export default{
       <div class="alert-box" v-if="!showJs">This is a alert box</div>
     </transition>
     </div>
-
+    <br><br><br>
+    <hr>
+    <h3> Switching between dynamic components </h3>
+    <button :class="{appHomeBtn: isActiveComponent == 'app-Home'}" class="homeBtn" @click="isActiveComponent= 'app-Home'">Home</button> &nbsp;
+    <button :class="{appPostBtn: isActiveComponent =='app-Post'}" class="postBtn" @click="isActiveComponent='app-Post'">Post</button>
+    <transition name="bounce" mode="out-in">
+      <component :is="isActiveComponent"></component>
+    </transition>
   </div>
 </template>
 
@@ -127,5 +141,26 @@ export default{
   100% {
     transform: scale(1);
   }
+}
+.homeBtn{
+  border: 1px solid #333;
+}
+
+.homeBtn.appHomeBtn{
+  background: rgb(25, 209, 25);
+  color: #fff;
+}
+
+.homeBtn:focus, .postBtn:focus{
+  outline: none;
+}
+
+.postBtn{
+  border: 1px solid #333;
+}
+
+.postBtn.appPostBtn{
+  background: rgb(25, 209, 25);
+  color: #fff;
 }
 </style>
