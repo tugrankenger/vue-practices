@@ -12,6 +12,7 @@ export default{
       showJs: false,
       elementWidth : 100,
       isActiveComponent: 'app-Home',
+      numberList:[1,2,3,4,5]
     }
   },
   methods:{
@@ -60,6 +61,14 @@ export default{
     },
     afterLeaveCancelled(el){
       console.log("after leave cancelled")
+    },
+    addNewItem(){
+      const position = Math.floor(Math.random()* this.numberList.length)
+      // console.log(position)
+      this.numberList.splice(position,0,this.numberList.length+1)
+    },
+    removeItem(index){
+      this.numberList.splice(index,1)
     }
   }
 }
@@ -105,6 +114,13 @@ export default{
     <transition name="bounce" mode="out-in">
       <component :is="isActiveComponent"></component>
     </transition>
+    <br><br>
+    <button @click="addNewItem">Add list item</button>
+    <ul class="list-group">
+      <transition-group name="bounce" mode="out-in">
+      <li :key="item" v-for="(item,index) in numberList" @click="removeItem(index)" title="remove item">{{item}}</li>
+      </transition-group>
+    </ul>
   </div>
 </template>
 
@@ -130,6 +146,11 @@ export default{
 }
 .bounce-leave-active {
   animation: bounce-in 0.5s reverse;
+  /* position: absolute; */
+}
+
+.bounce-move{
+  transition: transform 1s;
 }
 @keyframes bounce-in {
   0% {
@@ -161,6 +182,15 @@ export default{
 
 .postBtn.appPostBtn{
   background: rgb(25, 209, 25);
+  color: #fff;
+}
+
+.list-group li{
+  list-style-type: none;
+  padding: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  background: rgb(83, 117, 255);
   color: #fff;
 }
 </style>
