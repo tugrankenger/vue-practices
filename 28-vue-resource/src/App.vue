@@ -4,7 +4,7 @@
       <div class="col-md-6 col-md-offset-3">
         <h3>Vue Resource </h3>
         <div class="form-group">
-          <input type="text" class="form-control" v-model = "userName">
+          <input type="text" class="form-control" placeholder="Enter your name" v-model = "userName">
         </div>
         <button class="btn btn-primary" @click="saveUser()">Save</button>&nbsp;
         <button class="btn btn-info" @click="getUsers()">Get All Data</button>
@@ -39,12 +39,15 @@ import axios from 'axios'
     methods:{
       saveUser(){
         // alert(this.userName)
-        axios.post('https://vue-resource-f8d71-default-rtdb.firebaseio.com/users.json',{userName: this.userName}).then((res)=>{
+        axios.post('',{userName: this.userName}).then((res)=>{
           console.log(res)
+          this.userName=""
+        }).catch((err)=>{
+          alert(err)
         })
       },
       getUsers(){
-        axios.get('https://vue-resource-f8d71-default-rtdb.firebaseio.com/users.json').then((res)=>{
+        axios.get('').then((res)=>{
           let data = res.data
           for(let key in data){
             this.userList.push(data[key])
