@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
 import Axios from 'axios'
-Axios.defaults.baseURL = "https://vue-resource-f8d71-default-rtdb.firebaseio.com/users.json"
+Axios.defaults.baseURL = "https://vue-resource-f8d71-default-rtdb.firebaseio.com"
 Axios.interceptors.request.use(function(config){
   // console.log("config:", config)
   if(config.method == "get"){

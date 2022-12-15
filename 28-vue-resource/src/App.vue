@@ -11,7 +11,10 @@
         <hr>
         <h4>List:</h4>
         <ul class="form-group">
-          <li class="list-group-item" v-for="user in userList" key="item">{{user.userName}}</li>
+          <li class="list-group-item text-left d-flex justify-content-between" v-for="user in userList" key="user">
+          <span>{{user.data.userName}}</span>
+          <button class="btn btn-sm btn-danger" @click="deleteUser(user.key)">X</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -39,7 +42,7 @@ import axios from 'axios'
     methods:{
       saveUser(){
         // alert(this.userName)
-        axios.post('',{userName: this.userName}).then((res)=>{
+        axios.post('users.json',{userName: this.userName}).then((res)=>{
           console.log(res)
           this.userName=""
         }).catch((err)=>{
@@ -47,11 +50,21 @@ import axios from 'axios'
         })
       },
       getUsers(){
-        axios.get('').then((res)=>{
+        axios.get('users.json').then((res)=>{
           let data = res.data
+          console.log("data: ", data)
           for(let key in data){
-            this.userList.push(data[key])
+            this.userList.push({
+              key:key, 
+              data: data[key]
+            })
           }
+        })
+      },
+      deleteUser(key){
+        // alert(key)
+        axios.delete("users/" +key + ".json").then((res)=>{
+          console.log(res)
         })
       }
     }
