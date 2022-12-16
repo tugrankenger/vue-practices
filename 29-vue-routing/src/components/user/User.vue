@@ -1,8 +1,10 @@
 <template>
   <div class="container">
-    <h3>User Component</h3>
+    <hr>
+    <router-view></router-view>
+    <hr>
     <button class="btn btn-info" @click="goTo()">Go to Home</button><br><br>
-    <strong>User Name: {{userName}}</strong>
+    <!-- <strong>User Name: {{userName}}</strong> -->
   </div>
 </template>
 
