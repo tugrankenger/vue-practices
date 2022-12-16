@@ -4,33 +4,73 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomeComponent
+    component: HomeComponent,
+    meta:{
+      title: 'Home Page'
+    }
   },
   {
-    path:'/user/:id',
+    path:'/user',
     name:'User',
-    component: ()=> import('./components/user/User.vue')
+    component: ()=> import('./components/user/User.vue'),
+    meta:{
+      title: 'User'
+    },
+
+    children:[
+      {
+        path: '',
+        name:'UserStart',
+        component: ()=> import('./components/user/UserStart.vue'),
+        meta:{
+          title: 'User Start'
+        }
+      },
+      {
+        path:':id',
+        name:'UserDetail',
+        component: ()=> import('./components/user/UserDetail.vue'),
+        meta:{
+          title:'User Detail'
+        }
+      },
+      {
+        path:':id/UserEdit',
+        name:'UserEdit',
+        component: ()=> import('./components/user/UserEdit.vue'),
+        meta:{
+          title:'User Edit'
+        }
+      },
+      {
+        path:'/trump',
+        redirect:{
+          name:'Home'
+        }
+      },
+      {
+        path:'/:pathMatch(.*)*',
+        redirect: "/"
+      }
+    ]
   },
-  {
-    path:'/userDetail',
-    name:'UserDetail',
-    component: ()=> import('./components/user/UserDetail.vue')
-  },
-  {
-    path:'/userEdit',
-    name:'UserEdit',
-    component: ()=> import('./components/user/UserEdit.vue')
-  },
-  {
-    path: '/userStart',
-    name:'UserStart',
-    component: ()=> import('./components/user/UserStart.vue')
-  }
 ]
 
 const router = createRouter({
   routes,
-  history: createWebHistory()
+  history: createWebHistory(),
+  scrollBehavior(to,from,savedPosition){
+    if(to.hash){
+      return{
+        selector: to.hash
+      }
+    }
+  }
+})
+
+router.beforeEach((to,from,next)=>{
+  document.title= `${to.meta.title}`
+  next()
 })
 
 export default router;
