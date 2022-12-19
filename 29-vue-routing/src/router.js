@@ -32,7 +32,11 @@ const routes = [
         component: ()=> import('./components/user/UserDetail.vue'),
         meta:{
           title:'User Detail'
-        }
+        },
+        beforeEnter: (to, from, next) => {
+          console.log('Enter UserDetail');
+          next()
+        },
       },
       {
         path:':id/UserEdit',
