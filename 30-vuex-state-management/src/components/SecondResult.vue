@@ -1,7 +1,11 @@
 <template>
   <div>
+    <h3>Second:</h3>
     <p class="counter-container">Result: {{ double }}</p>
     <p class="counter-container">times: {{ stringC }}</p>
+    <!-- <input type="text" :value="value" @input = "setValue"> -->
+    <input type="text" v-model = "value">
+    <p>{{ value }}</p>
   </div>
 </template>
 
@@ -20,7 +24,19 @@ import {mapGetters} from 'vuex'
       double:'getDoubleCounter',
       stringC:'stringCounter'
     }),
-    
+    value:{
+      get(){
+        return this.$store.getters.getValue
+      },
+      set(event){
+        return this.$store.dispatch('setValueData',event)
+      }
+    }
+    },
+    methods:{
+    //   setValue(event){
+    //   return this.$store.dispatch('setValueData',event.target.value)
+    // }
     }
   }
 </script>

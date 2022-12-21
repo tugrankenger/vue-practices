@@ -3,11 +3,17 @@
     <button class="btn btn-success" @click="increaseCounter">+</button>&nbsp;
     <button class="btn btn-danger" @click="decreaseCounter">-</button>&nbsp;
     <button class="btn btn-primary" @click="resetCounter">Reset</button>
+    <hr>
+    <h3>Actions:</h3>
+    <button class="btn btn-success" @click="increment">+</button>&nbsp
+    <button class="btn btn-danger" @click="decrement">-</button>
+    <hr>
+    <button class="btn btn-primary" @click="incAsyc({time:1000})">Async +</button>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
   export default{
     methods:{
 
@@ -16,6 +22,20 @@ import { mapMutations } from 'vuex'
         'decreaseCounter',
         'resetCounter'
       ]),
+      ...mapActions([
+        'increment',
+        'decrement',
+        'incAsyc'
+      ]),
+      // increment(){
+      //   this.$store.dispatch('increment')
+      // },
+      // decrement(){
+      //   this.$store.dispatch('decrement')
+      // },
+      // incAsyc(time){
+      //   this.$store.dispatch('incAsyc',time)
+      // }
 
       // incrementCounter(){
       //   // this.$emit("counterEvent", 1)
@@ -39,5 +59,7 @@ import { mapMutations } from 'vuex'
 </script>
 
 <style>
-
+div{
+  margin: 20px 0
+}
 </style>
